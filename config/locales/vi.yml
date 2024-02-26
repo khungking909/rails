@@ -1,0 +1,6 @@
+vi:
+  default_title: "Khoa hoc Ruby on Rails Sample App"
+  content_help: "Chao mung den voi Help Page"
+  content_home: "Chao mung den voi Home Page"
+  content_edit: "Sua Zone"
+  content_new: "Tao Zone Moi"

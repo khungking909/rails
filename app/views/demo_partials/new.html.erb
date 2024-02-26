@@ -1,0 +1,6 @@
+
+<% provide :title, "NEW ZONE"%>
+<%= link_to "English", locale:"en" %>
+<%= link_to "Vietnamese", locale:"vi" %>
+<h1><%= t("content_new")%></h1>
+<%= render partial: 'form', zone: @zone, date: @date%>
