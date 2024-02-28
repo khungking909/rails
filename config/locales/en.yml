@@ -11,3 +11,7 @@ en:
   demo: "Demo"
   name_page: "SAMPLE_APP"
   help: "HELP"
+  sign_up: "SIGN UP"
+  err_mes: "Error"
+  the_form_contains: "The Form Contains %{num} Error"
+  not_found_user: "Not found user!"
