@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include SessionsHelper
+
+  add_flash_types :err_login, :succes_singup
+
   before_action :set_locale
 
   private

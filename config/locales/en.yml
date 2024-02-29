@@ -15,3 +15,16 @@ en:
   err_mes: "Error"
   the_form_contains: "The Form Contains %{num} Error"
   not_found_user: "Not found user!"
+  succes_singup: "LOGIN SUCCESSFULL"
+  err_message_log_login: "Account or Password is incorrect"
+  login_email_err: "Email is incorrect"
+  login_password_err: "Password is incorrect"
+  sessions:
+    email: "Email"
+    password: "Password"
+    log_in: "Log In"
+  headers:
+    account: "Account"
+    profile: "Profile"
+    settings: "Settings"
+    log_out: "Log Out"
