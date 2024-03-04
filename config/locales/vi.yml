@@ -23,3 +23,17 @@ vi:
         password: "Mật Khẩu"
   the_form_contains: "Biểu mẫu có %{num} lỗi "
   not_found_user: "Không tìm thấy người dùng!"
+  succes_singup: "Đăng nhập thành công"
+  login_email_err: "Tài khoản không chính xác"
+  login_password_err: "Mật khẩu không chính xác"
+  sessions:
+    email: "Email"
+    password: "Mật Khẩu"
+    log_in: "Đăng nhập"
+  new_user?: "Tạo mới?"
+  sign_up_now!: "Đăng ký ngay!"
+  headers:
+    account: "Tài khoản"
+    profile: "Hồ sơ"
+    settings: "Cài đặt"
+    log_out: "Đăng xuất"

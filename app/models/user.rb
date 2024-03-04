@@ -11,6 +11,15 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: Settings.LENGTH_255 },
                     format: { with: VALID_EMAIL_REGEX }, uniqueness: true
 
+  def self.digest(string)
+    cost = if ActiveModel::SecurePassword.min_cost
+             BCrypt::Engine::MIN_COST
+           else
+             BCrypt::Engine.cost
+           end
+    BCrypt::Password.create(string, cost: cost)
+  end
+
   private
 
   def downcase

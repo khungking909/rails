@@ -2,7 +2,6 @@
   <div id="error_explanation">
     <div class="alert alert-danger">
       <%= t("the_form_contains",num: @user.errors.count) %>
-
     </div>
     <ul>
       <% @user.errors.full_messages.each do |msg| %>

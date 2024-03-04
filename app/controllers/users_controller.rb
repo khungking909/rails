@@ -5,8 +5,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     return if @user
 
-    flash[:warning] = t("not_found_user")
-    redirect_to(root_path)
+    redirect_to signup_path
   end
 
   def new
@@ -16,7 +15,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to(user_path(id: @user.id))
+      log_in(@user)
+      flash[:succes_singup] = t("succes_singup")
+      redirect_to(@user)
     else
       render(:new, status: :unprocessable_entity)
     end

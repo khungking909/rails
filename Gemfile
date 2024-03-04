@@ -9,9 +9,11 @@ gem "bcrypt", "3.1.18"
 gem "bootstrap-sass", "3.4.1"
 gem "config"
 gem "htmlbeautifier"
+gem "importmap-rails"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 gem "rails-i18n"
 gem "sassc-rails"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -62,8 +64,8 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "byebug"
   gem "web-console"
-
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
