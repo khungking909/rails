@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def show
-    @user = User.find_by(id: params[:id])
-    return if @user
-
-    redirect_to signup_path
+  before_action :logged_in_user, only: [:edit, :update,:destroy]
+  before_action :get_user_by_id, except: [:new, :index, :create]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
+  def index
+    @pagy, @users = pagy User.all, items:Settings.page_5
   end
+  def show; end
 
   def new
     @user = User.new
@@ -16,16 +18,62 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      flash[:succes_singup] = t("succes_singup")
+      flash[:success] = t("succes_singup")
       redirect_to(@user)
     else
       render(:new, status: :unprocessable_entity)
     end
   end
 
+  def edit; end
+
+  def update
+    if @user.update user_params
+      flash[:success] = t "profile_updated"
+      redirect_to @user
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @user.destroy
+      flash[:success] = t "user_deleted"
+    else
+      flash[:danger] = t "delete_fail"
+    end
+      redirect_to users_path
+  end
+
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def get_user_by_id
+    @user = User.find_by(id: params[:id])
+    return if @user
+    flash[:danger] = t("not_found_users")
+    redirect_to(root_path)
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = t "mess_pls_login"
+      store_location
+      redirect_to login_url
+    end
+  end
+
+  def correct_user
+    return if current_user?(@user)
+    flash[:error] = t "can_not_edit"
+    redirect_to signup_path
+  end
+
+  def admin_user
+    redirect_to root_path unless current_user.admin?
   end
 end

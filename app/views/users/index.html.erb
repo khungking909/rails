@@ -1,0 +1,6 @@
+<% provide(:title, t("user_list")) %>
+<h1><%= t("user_list") %></h1>
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+<ul class="users">
+    <%= render @users%>
+</ul>

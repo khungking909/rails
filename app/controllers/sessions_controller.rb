@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
 
   def create
     log_in(@user)
-    redirect_to(@user)
+    params.dig(:session, :remember_me) == "1" ? remember(@user) : forget(@user)
+    redirect_back_or(@user)
   end
 
   def destroy
@@ -18,17 +19,17 @@ class SessionsController < ApplicationController
   private
 
   def load_user
-    @user = User.find_by email: params.dig(:session, :email)&.downcase
+    @user = User.find_by(email: params.dig(:session, :email)&.downcase)
     return if @user
 
-    flash.now[:err_login] = t("login_email_err")
+    flash.now[:error] = t("login_email_err")
     render(:new, status: :unprocessable_entity)
   end
 
   def authen_user
     return if @user.authenticate(params.dig(:session, :password))
 
-    flash.now[:err_login] = t("login_password_err")
+    flash.now[:error] = t("login_password_err")
     render(:new, status: :unprocessable_entity)
   end
 end

@@ -1,12 +1,19 @@
 <% if flash.present? %>
   <div id="error_explanation">
-    <div class="alert alert-danger">
-      <% case %>
-      <% when flash[:err_login]%>
-        <%= flash[:err_login] %>
-      <% when flash[:succes_singup]%>
-        <%= flash[:succes_singup] %>
+    <% case %>
+      <% when flash[:danger]%>
+        <div class="alert alert-danger">
+          <%= flash[:danger] %>
+        </div>
+      <% when flash[:success]%>
+        <div class="alert alert-success">
+          <%= flash[:success] %>
+        </div>
+      <% when flash[:error]%>
+        <div class="alert alert-warning">
+          <%= flash[:error] %>
+        </div>
       <% end %>
-    </div>
+
   </div>
 <% end %>

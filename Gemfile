@@ -13,7 +13,7 @@ gem "importmap-rails"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 gem "rails-i18n"
 gem "sassc-rails"
-
+gem "pagy"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
