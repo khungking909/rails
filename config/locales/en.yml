@@ -28,3 +28,7 @@ en:
     profile: "Profile"
     settings: "Settings"
     log_out: "Log Out"
+  save_changes: "Save Changes"
+  update_profile: "Update your profile"
+  edit_user: "Edit User"
+  remember: "Remember me on this computer"
