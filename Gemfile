@@ -15,6 +15,10 @@ gem "pagy"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 gem "rails-i18n"
 gem "sassc-rails"
+gem "pagy"
+gem "mailtrap"
+gem "faker", "2.21.0"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -61,6 +65,7 @@ group :development, :test do
   gem "rubocop-performance", "~> 1.11.0", require: false
   gem "rubocop-rails", "~> 2.11.0", require: false
   gem "rubocop-rspec", require: false
+  gem "dotenv", require: "dotenv/load"
 end
 
 group :development do

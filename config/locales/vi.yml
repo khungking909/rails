@@ -52,3 +52,8 @@ vi:
   user_list: "Người dùng"
   user: "Người dùng"
   permission_denied: "Sự cho phép bị từ chối"
+  invalid_activation_link: "Liên kết kích hoạt không hợp lệ"
+  activation_fail: "Tài khoản chưa được kích hoạt. Kiểm tra email của bạn để lấy liên kết kích hoạt."
+  message_mail: "Kích hoạt tài khoản"
+  activate: "Kích hoạt"
+  mail-message: "Chào mừng bạn đến với Ứng dụng mẫu! Nhấp vào liên kết bên dưới để kích hoạt tài khoản của bạn:"

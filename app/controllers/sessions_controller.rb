@@ -8,9 +8,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    log_in(@user)
-    params.dig(:session, :remember_me) == "1" ? remember(@user) : forget(@user)
-    redirect_back_or(@user)
+    if @user.activated?
+      log_in(@user)
+      params.dig(:session, :remember_me) == "1" ? remember(@user) : forget(@user)
+      redirect_back_or(@user)
+    else
+      flash[:danger] = t("activation_fail")
+      redirect_to login_path
+    end
   end
 
   def destroy
