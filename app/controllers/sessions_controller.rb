@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     log_in(@user)
+    params.dig(:session, :remember_me) == "1" ? remember(@user) : forget(@user)
     redirect_to(@user)
   end
 
@@ -18,7 +19,7 @@ class SessionsController < ApplicationController
   private
 
   def load_user
-    @user = User.find_by email: params.dig(:session, :email)&.downcase
+    @user = User.find_by(email: params.dig(:session, :email)&.downcase)
     return if @user
 
     flash.now[:err_login] = t("login_email_err")

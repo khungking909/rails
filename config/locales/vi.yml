@@ -37,3 +37,8 @@ vi:
     profile: "Hồ sơ"
     settings: "Cài đặt"
     log_out: "Đăng xuất"
+  save_changes: "Luu"
+  update_profile: "Cập nhập thông tin"
+  edit_user: "Cập nhật"
+  not_found_users: "Không tìm thấy người này!"
+  remember: "Nhớ mật khẩu"
