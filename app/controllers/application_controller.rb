@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   include SessionsHelper
 
-  add_flash_types :err_login, :succes_singup
+  add_flash_types :danger, :success, :error
 
   before_action :set_locale
 
