@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   private_constant :VALID_EMAIL_REGEX
 
   has_secure_password
+
   before_save :downcase
+  before_create :create_activation_digest
 
   validates :name, presence: true, length: { maximum: Settings.LENGTH_50 }
   validates :email, presence: true, length: { maximum: Settings.LENGTH_255 },
@@ -34,17 +36,34 @@ class User < ApplicationRecord
     update_column(:remember_digest, User.digest(remember_token))
   end
 
-  def authenticated?(remember_token)
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(attribute, token)
+    digest = send "#{attribute}_digest"
+    return false unless digest
+
+    BCrypt::Password.new(digest).is_password? token
   end
 
   def forget
     update_column(:remember_digest, nil)
   end
 
+  def activate
+    update_columns activated: true, activated_at: Time.zone.now
+  end
+
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
   private
 
   def downcase
     email.downcase!
+  end
+
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 end

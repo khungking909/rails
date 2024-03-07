@@ -111,6 +111,7 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     deep_merge (1.2.2)
+    dotenv (3.1.0)
     drb (2.2.0)
       ruby2_keywords
     dry-configurable (1.1.0)
@@ -175,6 +176,7 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mailtrap (1.2.2)
     marcel (1.0.2)
     matrix (0.4.2)
     mini_mime (1.1.5)
@@ -350,10 +352,12 @@ DEPENDENCIES
   capybara
   config
   debug
+  dotenv
   faker (= 2.21.0)
   htmlbeautifier
   importmap-rails
   jbuilder
+  mailtrap
   mysql2 (~> 0.5)
   pagy
   puma (>= 5.0)
