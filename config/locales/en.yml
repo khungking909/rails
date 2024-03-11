@@ -62,3 +62,18 @@ en:
     message_mail: "To reset your password click the link below:"
     message_mail_2: "This link will expire in one hours."
   forgot_password: "(forgot_password)"
+  microposts:
+    name: "Micropost"
+    title: "Microposts (%{num})"
+    micropost: "micropost"
+    posted: "Posted"
+    time: "Posted %{time} ago."
+    delete: "Delete"
+    text_area_placeholder: "Compose new micropost..."
+    btn_submit: "Post"
+    add_sucess: "Micropost created!"
+    destroy_success: "Micropost deleted!"
+    destroy_fails: "Deleted fail!"
+    invalid_micropost: "Micropost invalid"
+  user_redirect:
+    profile: "View my profile"

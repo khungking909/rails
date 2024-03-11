@@ -70,3 +70,17 @@ vi:
     message_mail: "Để đặt lại mật khẩu của bạn hãy nhấp vào liên kết bên dưới:"
     message_mail_2: "Liên kết này sẽ hết hạn sau một giờ."
   forgot_password: "(Quên mật khẩu)"
+  microposts:
+    name: "Bài đăng"
+    title: "Bài đăng (%{num})"
+    micropost: "bài đăng"
+    time: "Đã đăng %{time} trước."
+    delete: "Xóa"
+    text_area_placeholder: "Soạn micropost mới..."
+    btn_submit: "Đăng"
+    add_success: "Đã tạo Micropost!"
+    destroy_success: "Đã xóa Micropost!"
+    destroy_fails: "Không thể xóa Micropost!"
+    invalid_micropost: "Bài đăng không hợp lệ"
+  user_redirect:
+    profile: "Xem hồ sơ"
