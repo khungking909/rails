@@ -83,6 +83,11 @@ aside {
       padding-top: 0;
     }
 
+    textarea {
+      height: 100px;
+      margin-bottom: 5px;
+    }
+
     span {
       display: block;
       margin-bottom: 3px;
@@ -136,5 +141,56 @@ aside {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+
+  input {
+    border: 0;
+  }
+}
+
+.microposts {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+.microposts {
+  .content {
+    display: block;
+    margin-left: 60px;
+
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+
   }
 }

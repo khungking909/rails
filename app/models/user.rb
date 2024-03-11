@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
 
+  has_many :microposts, dependent: :destroy
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   private_constant :VALID_EMAIL_REGEX
 
@@ -37,10 +39,10 @@ class User < ApplicationRecord
   end
 
   def authenticated?(attribute, token)
-    digest = send "#{attribute}_digest"
+    digest = send("#{attribute}_digest")
     return false unless digest
 
-    BCrypt::Password.new(digest).is_password? token
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   def forget
@@ -48,9 +50,8 @@ class User < ApplicationRecord
   end
 
   def activate
-    update_columns activated: true, activated_at: Time.zone.now
+    update_columns(activated: true, activated_at: Time.zone.now)
   end
-
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
@@ -63,7 +64,7 @@ class User < ApplicationRecord
 
   def create_reset_digest
     self.reset_token = User.new_token
-    update_columns reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now
+    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
   end
 
   def send_password_reset_email
@@ -71,7 +72,11 @@ class User < ApplicationRecord
   end
 
   def password_reset_expired?
-    reset_sent_at < 1.hours.ago
+    reset_sent_at < 1.hour.ago
+  end
+
+  def feed
+    microposts
   end
 
   private
@@ -79,5 +84,4 @@ class User < ApplicationRecord
   def downcase
     email.downcase!
   end
-
 end

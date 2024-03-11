@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_back_or(@user)
     else
       flash[:danger] = t("activation_fail")
-      redirect_to login_path
+      redirect_to(login_path)
     end
   end
 

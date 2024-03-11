@@ -5,20 +5,22 @@ source "https://rubygems.org"
 ruby "3.2.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "active_storage_validations", "0.9.8"
 gem "bcrypt", "3.1.18"
 gem "bootstrap-sass", "3.4.1"
 gem "config"
 gem "faker", "2.21.0"
+gem "faker", "2.21.0"
 gem "htmlbeautifier"
+gem "image_processing", "1.12.2"
 gem "importmap-rails"
+gem "mailtrap"
+gem "pagy"
 gem "pagy"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 gem "rails-i18n"
 gem "sassc-rails"
-gem "pagy"
-gem "mailtrap"
-gem "faker", "2.21.0"
-
+gem "i18n-js"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -61,11 +63,11 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows]
+  gem "dotenv", require: "dotenv/load"
   gem "rubocop", "~> 1.18.0", require: false
   gem "rubocop-performance", "~> 1.11.0", require: false
   gem "rubocop-rails", "~> 2.11.0", require: false
   gem "rubocop-rspec", require: false
-  gem "dotenv", require: "dotenv/load"
 end
 
 group :development do

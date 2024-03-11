@@ -10,7 +10,9 @@ class UsersController < ApplicationController
     @pagy, @users = pagy(User.all, items: Settings.page_5)
   end
 
-  def show; end
+  def show
+    @page, @microposts = pagy(@user.microposts, items: Settings.page_5)
+  end
 
   def new
     @user = User.new
@@ -21,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_activation_email
       flash[:info] = t("message_check_mail")
-      redirect_to login_path
+      redirect_to(login_path)
     else
       render(:new, status: :unprocessable_entity)
     end
@@ -61,14 +63,6 @@ class UsersController < ApplicationController
     redirect_to(login_path)
   end
 
-  def logged_in_user
-    return if logged_in?
-
-    flash[:danger] = t("mess_pls_login")
-    store_location
-    redirect_to(login_url)
-  end
-
   def correct_user
     return if current_user?(@user)
 
@@ -82,5 +76,4 @@ class UsersController < ApplicationController
     flash[:error] = t("permission_denied")
     redirect_to(login_path)
   end
-
 end
