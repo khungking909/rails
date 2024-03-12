@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, except: %i(new create)
   before_action :load_user, except: %i(new index create)
-  before_action :correct_user, only: %i(edit update show)
+  before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: :destroy
 
   def index
@@ -47,6 +47,18 @@ class UsersController < ApplicationController
       flash[:danger] = t("delete_fail")
     end
     redirect_to(users_path)
+  end
+
+  def following
+    @title = t("relationship.following")
+    @pagy, @users = pagy @user.following, items: Settings.page_5
+    render :show_follow
+  end
+
+  def followers
+    @title = t("relationship.followers")
+    @pagy, @users = pagy @user.followers, items: Settings.page_5
+    render :show_follow
   end
 
   private

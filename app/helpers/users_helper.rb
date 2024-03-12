@@ -11,4 +11,8 @@ module UsersHelper
   def destroy_user?(user)
     current_user.admin? && !current_user?(user)
   end
+
+  def user_relation?(user)
+    current_user.following.find_by(id: user.id).present?
+  end
 end

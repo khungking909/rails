@@ -3,3 +3,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "custom/menu"
 import "custom/image_upload"
+import "@hotwired/turbo-rails"
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
