@@ -77,3 +77,7 @@ en:
     invalid_micropost: "Micropost invalid"
   user_redirect:
     profile: "View my profile"
+  relationship:
+    not_follow: "You do not follow this person yet"
+    following: "Following"
+    followers: "Followers"

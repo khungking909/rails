@@ -84,3 +84,7 @@ vi:
     invalid_micropost: "Bài đăng không hợp lệ"
   user_redirect:
     profile: "Xem hồ sơ"
+  relationship:
+    not_follow: "Bạn chưa follow người này"
+    following: "Đã theo dõi"
+    followers: "Được theo dõi"
